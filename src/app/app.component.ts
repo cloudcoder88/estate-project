@@ -20,7 +20,7 @@ export class AppComponent {
     image:'https://pictures-nigeria.jijistatic.net/176111110_MTIwMC0xNjAwLTNhOGU5YmQ2ZmY.webp',
     
     },
-    {name:'5bdrm Bungalow in goshen estate,Abuja',
+    {name:'5 bedroom Bungalow in goshen estate,Abuja',
     price:'120,000,000',
     location:'goshen estate,Abuja',
     beds: 5,
