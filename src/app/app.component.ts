@@ -61,6 +61,24 @@ export class AppComponent {
     baths: 4,
     description: 'A luxurious apartment in the heart of Lekki.',
     image:'https://pictures-nigeria.jijistatic.net/176111110_MTIwMC0xNjAwLTNhOGU5YmQ2ZmY.webp',
+    },
+    {
+      name:'three bedroom duplex in Abuja karshi for sale',
+      price:'65,000,000',
+      location:'Abuja, karshi',
+      beds:'3',
+      baths:'4',
+      description:'A beautiful 3bedroom Semi-Detached Duplex in a beautiful serene estate',
+      image:'https://pictures-nigeria.jijistatic.net/142025268_MTA4MC04MTAtMjAyN2FjOTlmMg.webp',
+    },
+    {
+      name:'4bedroom Duplex in Sangotedo for sale',
+      price:'165,000,000',
+      location:'Sangotedo, Lagos',
+      beds:'4',
+      baths:'4',
+      description:'A spacious 4-bedroom duplex located in the serene Sangotedo area.',
+      image:'https://pictures-nigeria.jijistatic.net/168832901_MTIwMC0xNjAwLWVkMTYyODIzNzE.webp'
     }
   ];
   inquire(propertyName: string): void {
