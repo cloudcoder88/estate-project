@@ -1,0 +1,67 @@
+
+<header>
+  <h1>Eko Premier Estates</h1>
+  <nav>
+    <ul>
+      <li><a href="#properties">Properties</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li><a href="#contact-section">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Find Your Dream Home in Lagos</h2>
+  <p>Affordable, luxury, waterfront & mainland properties.</p>
+</section>
+
+<section id="properties" class="properties">
+  <h2>Featured Listings</h2>
+  <div class="property-list">
+    <div *ngFor="let property of properties" class="property-card">
+      <img [src]="property.image" [alt]="property.name" />
+      <h3>{{ property.name }}</h3>
+      <p>₦{{ property.price }} - {{ property.beds }} Bed, {{ property.baths }} Bath</p>
+      <p *ngIf="property.description">{{ property.description }}</p>
+      <button (click)="inquire(property.name)">Inquire</button>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <p>We are a Lagos-based real estate agency helping you buy, rent, or sell properties with ease. From luxury estates to affordable housing, we cover all of Lagos.</p>
+</section>
+
+<section id="contact-section" class="contact-section">
+  <h2>Contact Us</h2>
+  <form class="contact-form">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="yourname@example.com" required />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g. +2348012345678" />
+    </div>
+    <div class="form-group">
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+    </div>
+    <button type="submit">Send Message To The Agent</button>
+  </form>
+</section>
+<footer>
+  <p>&copy; 2025 Eko Premier Estates. All rights reserved.</p>
+</footer>
+
+
+   
+            
+        
+          
+
