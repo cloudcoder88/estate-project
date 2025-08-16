@@ -79,6 +79,17 @@ export class AppComponent {
       baths:'4',
       description:'A spacious 4-bedroom duplex located in the serene Sangotedo area.',
       image:'https://pictures-nigeria.jijistatic.net/168832901_MTIwMC0xNjAwLWVkMTYyODIzNzE.webp'
+    },
+
+    {
+      name:'4 bedroom Duplex in sangotedo for sale',
+      price:'165,000,000',
+      location:'Sangotedo,Lagos',
+      beds:'4',
+      baths:'4',
+      description:'A spacious 4-bedroom duplex located in the serence Sangotedo area .',
+      image:'https://pictures-nigeria.jijistatic.net/168832901_MTIwMC0xNjAwLWVkMTYyODIzNzE.webp',
+
     }
   ];
   inquire(propertyName: string): void {
