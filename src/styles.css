@@ -103,6 +103,9 @@ footer {
     .property {
         flex:1 1 100% ;
     }
+  .nav ul{
+    flex-direction: column;
+  }
 }
 
 
