@@ -20,7 +20,7 @@ export class ContactComponent {
 constructor(private http: HttpClient) {}
 
   onSubmit() {
-    this.http.post('http://localhost:5000/contact', this.contact).subscribe({
+    this.http.post('https://real-estate-backend-dxa1.onrender.com/contact', this.contact).subscribe({
       next: (res) => {
         alert('✅ Message sent successfully!');
         this.contact = { fullName: '', email: '', phone: '', message: '' }; // reset form
