@@ -8,7 +8,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent {   /**this place contains an array of properties
+  and every single properties is an object containing four items
+  name,price,location,beds,baths,description,image */
   properties = [
     {
       name: 'ikeja Apartment',

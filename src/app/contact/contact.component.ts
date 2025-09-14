@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';     
+import { HttpClient } from '@angular/common/http';       /**import the core Angular dependencies,3rd party dependencies,custom dependencies*/
 import { FormsModule } from '@angular/forms';
 import { FormsDataService } from '../formsdata.service';
 
@@ -31,6 +31,11 @@ export class ContactComponent {
   }
 
   onSubmit() {
+    /** we can conclude an observable stream by subscribing to it using the subscribe method
+     * oNext is used when new data arrives
+     * onError is called when an error is thrown
+     * the backend server was made with node.js and hosted with render
+    */
     this.http.post('https://real-estate-backend-dxa1.onrender.com/contact', this.contact).subscribe({
       next: () => {
         alert('✅ Message sent successfully!');

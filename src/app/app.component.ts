@@ -92,6 +92,12 @@ export class AppComponent {
 
     }
   ];
+  
+  /** Event Binding takes place here below
+   * Flows data from element to the component
+   * Created with parentheses <button(click)="variable($event)"><button>
+   * information about the target event is carried in the $event parameter
+  */
   inquire(propertyName: string): void {
     alert(`thanks for your interest in : ${propertyName}. we will get back to you shortly`);
   }

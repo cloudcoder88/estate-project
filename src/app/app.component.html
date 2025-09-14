@@ -1,5 +1,6 @@
 <header>
   <nav>
+    <!-- we can navigate to routes using the router link directive-->
     <ul>
       <li><button [routerLink]="'/'">Home</button></li>
       <li><button [routerLink]="'/about'">About</button></li>
@@ -9,6 +10,9 @@
 </header>
 
 <!-- This is where pages load -->
+ <!-- components are  loaded into the router-outlet component,
+  The router uses history.PushState which means you need to set up
+  a base-ref tag to our index.html file-->
 <router-outlet></router-outlet>
 
 <footer>

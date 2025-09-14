@@ -8,7 +8,8 @@
 
 <section id="properties" class="properties">
   <h2>Featured Listings</h2>
-  <div class="property-list">
+  <div class="property-list">  <!-- property binding,
+    property  binding sets a DOM element property to the value of an expression-->
     <div *ngFor="let property of properties" class="property-card">
       <img [src]="property.image" [alt]="property.name" />
       <h3>{{ property.name }}</h3>
