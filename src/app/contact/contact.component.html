@@ -1,6 +1,7 @@
 <section class="contact-section">
   <h2>Contact Us</h2>
-
+<!-- [ngModel] connects HTML to typescript variable
+ name='' is required for angular to tract input-->
   <!-- Hook up Angular form -->
   <form class="contact-form" (ngSubmit)="onSubmit()" #f="ngForm">
     <div class="form-group">
@@ -21,7 +22,7 @@
         type="email"
         id="email"
         name="email"
-        [(ngModel)]="contact.email"
+        [(ngModel)]="contact.email"     
         placeholder="yourname@example.com"
         required
       />
@@ -43,7 +44,7 @@
       <textarea
         id="message"
         name="message"
-        [(ngModel)]="contact.message"
+        [(ngModel)]="contact.message"    
         rows="5"
         placeholder="Type your message here..."
         required

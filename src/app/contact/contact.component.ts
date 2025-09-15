@@ -31,10 +31,13 @@ export class ContactComponent {
   }
 
   onSubmit() {
-    /** we can conclude an observable stream by subscribing to it using the subscribe method
+    /** import FormsModule in your component or app
+     * we can conclude an observable stream by subscribing to it using the subscribe method
      * oNext is used when new data arrives
      * onError is called when an error is thrown
      * the backend server was made with node.js and hosted with render
+     * onSubmit calls your method when a form is submited
+     * Use HtttpClient to send data to the backend server
     */
     this.http.post('https://real-estate-backend-dxa1.onrender.com/contact', this.contact).subscribe({
       next: () => {
