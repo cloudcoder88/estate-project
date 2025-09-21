@@ -51,6 +51,7 @@
       ></textarea>
     </div>
 
-    <button type="submit">Send Message To The Agent</button>
-  </form>
-</section>
+    <button type="submit" [disabled]="isLoading">
+  <span *ngIf="!isLoading">Send Message To The Agent</span>
+  <span *ngIf="isLoading" class="spinner"></span>
+</button>
