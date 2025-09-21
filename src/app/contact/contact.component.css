@@ -1,3 +1,14 @@
+/* the contact us page drifts to the right on mobile becuase the sometimes misbehaves if the parent takes 
+full width but the child has no auto margins
+HOW I FIXED IT
+Added box-sizing so padding does not cause over-flow
+forced.contact-form to always stay centered (margin:0 auto;)
+cleaned up button styling so spinner +text align properly.
+*/
+
+
+
+
 .contact-section {
   display: flex;
   justify-content: center;
@@ -5,6 +16,7 @@
   min-height: 100vh;
   background: #f9f9f9;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .contact-form {
@@ -12,21 +24,22 @@
   padding: 25px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
   width: 100%;
-  max-width: 450px;   
-  margin: 0 auto;
+  max-width: 450px;
+  margin: 0 auto; /* keeps it centered */
+  box-sizing: border-box;
 }
 
-/*  Mobile fix */
+/* Mobile fix */
 @media (max-width: 600px) {
   .contact-form {
     padding: 20px;
-    max-width: 95%;   
+    width: 100%;   /* take full width */
+    max-width: 95%; /* small margin on sides */
   }
 
   .contact-section {
-    padding: 10px;
+    padding: 15px;
   }
 }
 
@@ -41,24 +54,37 @@
   font-size: 14px;
   outline: none;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: #999;   /* soft gray "inbox" text */
+  color: #999; /* soft gray */
   font-style: italic;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #2196f3;  /* highlight on focus */
+  border-color: #2196f3;
 }
 
 button {
   position: relative;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
+  padding: 10px 20px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #1769aa;
+  transform: scale(1.05);
 }
 
 .spinner {
@@ -68,6 +94,7 @@ button {
   border-top: 3px solid #2196f3;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
+  margin-left: 8px;
 }
 
 @keyframes spin {
@@ -75,9 +102,3 @@ button {
     transform: rotate(360deg);
   }
 }
-
-
-
-
-
-
