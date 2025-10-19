@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class ContactComponent {
   contact = {
     fullName: '',
-    email: '',
+    emailField: '',
     message: '',
     phone: ''
   };
@@ -29,16 +29,27 @@ export class ContactComponent {
     */
   isLoading: boolean = false;
 
+  submitted = false; //add this to track form submission status
+
   constructor(private http: HttpClient) {}
 
-  onSubmit() {
-    this.isLoading = true; // start the spinner
+  onSubmit(contactForm: any) {
+    this.submitted = true; // accept the form parameter and set submitted to true
 
+
+
+    //check if form is valid before submitting it
+    if(contactForm.invalid){
+      alert('❌ Please fill out all required fields correctly!.');
+      return;
+    }
+    this.isLoading =true;
     this.http.post('https://real-estate-backend-dxa1.onrender.com/contact', this.contact).subscribe({
       next: (res) => {
         alert('✅ Message sent successfully!');
-        this.contact = { fullName: '', email: '', phone: '', message: '' }; 
+        this.contact = { fullName: '', emailField: '', phone: '', message: '' }; 
         this.isLoading = false; // stop  the spinner
+        this.submitted = false; //reset form submission status
       },
       error: (err) => {
         console.error('❌ Error sending message:', err);
