@@ -33,7 +33,7 @@
         type="email"
         id="email"
         name="email"
-        [(ngModel)]="contact.emailField" 
+        [(ngModel)]="contact.email" 
         #emailField="ngModel"
         placeholder="yourname@example.com"
         required
@@ -91,11 +91,11 @@
 
 <!-- success/Error Messages -->
 
-<div *ngIf="submitted && f.valid && !isLoading" class="success-message">
-      ✅ Message sent successfully!
-    </div>
-    </div>
-
+<!-- Server Response Messages -->
+<div *ngIf="serverMessage" 
+     [class]="isSucess ? 'success-message' : 'error-message'">
+  {{ serverMessage }}
+</div>
 
 
 

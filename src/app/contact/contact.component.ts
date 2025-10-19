@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class ContactComponent {
   contact = {
     fullName: '',
-    emailField: '',
+    email: '', // changed from 'emailField' to 'email' to match the backend
     message: '',
     phone: ''
   };
@@ -31,6 +31,9 @@ export class ContactComponent {
 
   submitted = false; //add this to track form submission status
 
+  serverMessage = '';// these properties are used to tract server responses
+  isSucess: boolean = false;  //fixed ,added type annotation
+
   constructor(private http: HttpClient) {}
 
   onSubmit(contactForm: any) {
@@ -44,17 +47,24 @@ export class ContactComponent {
       return;
     }
     this.isLoading =true;
+    this.serverMessage ='';
+    this.isSucess = false;
     this.http.post('https://real-estate-backend-dxa1.onrender.com/contact', this.contact).subscribe({
       next: (res) => {
-        alert('✅ Message sent successfully!');
-        this.contact = { fullName: '', emailField: '', phone: '', message: '' }; 
+        //Sucess - use the custom messages instead of alert
+       this.serverMessage ='✅ Message sent successfully!';
+       this.isSucess =true;
+        this.contact = { fullName: '', email: '', phone: '', message: '' }; 
         this.isLoading = false; // stop  the spinner
         this.submitted = false; //reset form submission status
+        contactForm.reset();// this will clear the form validation states
       },
       error: (err) => {
-        console.error('❌ Error sending message:', err);
-        alert('Something went wrong. Please try again.');
-        this.isLoading = false; // stop spinner
+        // Error - use the custom message instead of the javascript alert
+        this.serverMessage ='❌ Something went wrong. Please try again.';
+        this.isSucess = false; // stop spinner
+        console.error('Error sending message:',err);
+        this.isLoading = false;
       }
     });
   }
