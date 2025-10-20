@@ -49,7 +49,7 @@ export class ContactComponent {
     this.isLoading =true;
     this.serverMessage ='';
     this.isSucess = false;
-    this.http.post('https://real-estate-backend-dxa1.onrender.com/contact', this.contact).subscribe({
+    this.http.post('https://real-estate-backend-dxa1.onrender.com', this.contact).subscribe({
       next: (res) => {
         //Sucess - use the custom messages instead of alert
        this.serverMessage ='✅ Message sent successfully!';
