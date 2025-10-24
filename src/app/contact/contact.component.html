@@ -1,104 +1,90 @@
 <section class="contact-section">
-  <h2>Contact Us</h2>
-<!-- [ngModel] connects HTML to typescript variable
- name='' is required for angular to tract input-->
-  <!-- Hook up Angular form -->
-  
-  <form class="contact-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <!-- Fixed the form reference and added proper validation above,added an argument to the onSubmit method-->
-     <!--Full Name Field 👇-->
-    <div class="form-group">
-      <label for="name">Full Name *</label>
-      <input
-        type="text"
-        id="name"
-        name="fullName"
-        [(ngModel)]="contact.fullName"
-        #fullName="ngModel"
-        placeholder="Your full name here"
-        required
-        [class.error]="(fullName.invalid && (fullName.dirty || fullName.touched))  ||(submitted && fullName.invalid)"
-      />
-      <!--validation message-->
-      <div *ngIf="(fullName.invalid && (fullName.dirty || fullName.touched)) || (submitted && fullName.invalid)" 
-           class="error-message">
-        Full name is required
-      </div>
-    </div>
-
-    <!--Email Address Field 👇-->
-    <div class="form-group">
-      <label for="email">Email Address *</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        [(ngModel)]="contact.email" 
-        #emailField="ngModel"
-        placeholder="yourname@example.com"
-        required
-        email
-       [class.error]="(emailField.invalid && (emailField.dirty || emailField.touched)) || (submitted && emailField.invalid)"
-      />
-      <!--validation message-->
-      <div *ngIf="(emailField.invalid && (emailField.dirty || emailField.touched)) || (submitted && emailField.invalid)" 
-           class="error-message">
-    <div *ngIf="emailField.errors?.['required']">Valid email is required</div>
-    <div *ngIf="emailField.errors?.['email']">Invalid email format</div>
-    </div>
-    </div>
-
-    <!--Phone Number Field 👇-->
-    <div class="form-group">
-      <label for="phone">Phone Number</label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        [(ngModel)]="contact.phone"
-        #phoneField="ngModel"
-        placeholder="e.g. +2348012345678"
-      />
-    </div>
-
-    <!--Message Field 👇-->
-
-    <div class="form-group">
-      <label for="message">Your Message *</label>
-      <textarea
-        id="message"
-        name="message"
-        [(ngModel)]="contact.message"
-        #messageField="ngModel"
-        rows="5"
-        placeholder="Type your message here..."
-        required
-        minlength="10"
-        [class.error]="(messageField.invalid && (messageField.dirty || messageField.touched)) || (submitted && messageField.invalid)"
-      ></textarea>
-      <!--validation message-->
-      <div *ngIf="(messageField.invalid && (messageField.dirty || messageField.touched)) || (submitted && messageField.invalid)" class="error-message">
-        <div *ngIf="messageField.errors?.['required']">Message is required</div>
-        <div *ngIf="messageField.errors?.['minlength']">Message must be at least 10 characters long</div>
+  <div class="contact-container">
+    <h2 class="contact-title">Contact Us</h2>
+<!-- contact form, ng model binds your html template to the typescript
+ variable for tracking form state -->
+    <form class="contact-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <!-- Full Name -->
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input
+          type="text"
+          id="name"
+          name="fullName"
+          [(ngModel)]="contact.fullName"
+          #fullName="ngModel"
+          placeholder="Your full name"
+          required
+          [class.error]="(fullName.invalid && (fullName.dirty || fullName.touched)) || (submitted && fullName.invalid)"
+        />
+        <div *ngIf="(fullName.invalid && (fullName.dirty || fullName.touched)) || (submitted && fullName.invalid)" class="error-message">
+          Full name is required
+        </div>
       </div>
 
-      <!--Submit Button 👇-->
-    <button type="submit" [disabled]="isLoading">
-  <span *ngIf="!isLoading">Send Message To The Agent</span>
-  <span *ngIf="isLoading" >Sending</span>
-</button>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="contact.email"
+          #emailField="ngModel"
+          placeholder="yourname@example.com"
+          required
+          email
+          [class.error]="(emailField.invalid && (emailField.dirty || emailField.touched)) || (submitted && emailField.invalid)"
+        />
+        <div *ngIf="(emailField.invalid && (emailField.dirty || emailField.touched)) || (submitted && emailField.invalid)" class="error-message">
+          <div *ngIf="emailField.errors?.['required']">Valid email is required</div>
+          <div *ngIf="emailField.errors?.['email']">Invalid email format</div>
+        </div>
+      </div>
 
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          [(ngModel)]="contact.phone"
+          #phoneField="ngModel"
+          placeholder="e.g. +2348012345678"
+        />
+      </div>
 
-<!-- success/Error Messages -->
+      <!-- Message -->
+      <div class="form-group">
+        <label for="message">Your Message *</label>
+        <textarea
+          id="message"
+          name="message"
+          [(ngModel)]="contact.message"
+          #messageField="ngModel"
+          rows="5"
+          placeholder="Type your message..."
+          required
+          minlength="10"
+          [class.error]="(messageField.invalid && (messageField.dirty || messageField.touched)) || (submitted && messageField.invalid)"
+        ></textarea>
+        <div *ngIf="(messageField.invalid && (messageField.dirty || messageField.touched)) || (submitted && messageField.invalid)" class="error-message">
+          <div *ngIf="messageField.errors?.['required']">Message is required</div>
+          <div *ngIf="messageField.errors?.['minlength']">Message must be at least 10 characters</div>
+        </div>
+      </div>
 
-<!-- Server Response Messages -->
-<div *ngIf="serverMessage" 
-     [class]="isSucess ? 'success-message' : 'error-message'">
-  {{ serverMessage }}
-</div>
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Send Message To The Agent</span>
+        <span *ngIf="isLoading">Sending...</span>
+      </button>
 
-
-
-
-
-
+      <!-- Server Response -->
+      <div *ngIf="serverMessage" [class]="isSucess ? 'success-message' : 'error-message'">
+        {{ serverMessage }}
+      </div>
+    </form>
+  </div>
+</section>
