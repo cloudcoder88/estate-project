@@ -51,7 +51,7 @@ export class ContactComponent {
     this.isSucess = false;
     this.http.post('https://real-estate-backend-dxa1.onrender.com/contact', this.contact).subscribe({
       next: (res) => {
-        //Sucess - use the custom messages instead of alert
+        //Success - use the custom messages instead of alert
        this.serverMessage ='✅ Message sent successfully!';
        this.isSucess =true;
         this.contact = { fullName: '', email: '', phone: '', message: '' }; 
