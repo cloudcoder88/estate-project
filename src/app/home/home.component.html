@@ -10,7 +10,8 @@
   <h2>Featured Listings</h2>
   <div class="property-list">  <!-- Property binding and Event binding,
     property  binding sets a DOM element property to the value of an expression
-    Event Binding binds a component method to a DOM element event-->
+    Event Binding binds a component method to a DOM element event.
+    the click event is bound to the inquire()method on the component-->
     <div *ngFor="let property of properties" class="property-card">
       <img [src]="property.image" [alt]="property.name" />
       <h3>{{ property.name }}</h3>
