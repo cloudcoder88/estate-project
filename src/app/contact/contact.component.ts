@@ -25,7 +25,7 @@ export class ContactComponent {
      * the backend server was made with node.js and hosted with render
      * onSubmit calls your method when a form is submited
      * Use HtttpClient to send data to the backend server
-     * added a loading bar to the forms page
+     * 
     */
   isLoading: boolean = false;
 
